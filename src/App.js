@@ -28,7 +28,10 @@ function App() {
       ) : (
         <div className="flex flex-col justify-center items-center h-screen w-full">
           <h1 className="mb-4 text-xl">Join a room</h1>
-          <form onSubmit={joinRoom} className="flex flex-col w-96	">
+          <form
+            onSubmit={joinRoom}
+            className="flex flex-col w-full md:w-96 px-4 md:mx-0"
+          >
             <input
               className="border-2 p-2"
               required

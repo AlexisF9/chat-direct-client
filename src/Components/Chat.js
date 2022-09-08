@@ -36,6 +36,7 @@ export default function Chat({ socket, username, room, setOpenRoom }) {
     };
     await socket.emit("send_message", messageData);
     setMessageList((list) => [...list, messageData]);
+    setMessage("");
   };
 
   const closeRoom = () => {
@@ -44,23 +45,24 @@ export default function Chat({ socket, username, room, setOpenRoom }) {
   };
 
   return (
-    <div className="ml-8 mt-8">
+    <div className="mx-4 md:ml-auto md:mr-auto md:w-9/12">
       <button
-        className="bg-red-500	hover:bg-red-700 px-4 py-2 rounded-full text-white"
+        className="mt-4 bg-red-500	hover:bg-red-700 px-4 py-2 rounded-full text-white"
         onClick={() => closeRoom()}
       >
         Close room
       </button>
+
       <h3 className="my-4">
         Welcome <strong>{username}</strong> in the room :{" "}
         <strong>{room}</strong>
       </h3>
 
-      <div className="pb-6 px-2 w-96 h-96 bg-slate-200 overflow-y-scroll">
+      <div className="pb-2 px-2 h-96 bg-slate-200 overflow-y-scroll">
         {messageList.map((item, i) => {
           return (
             <div key={i} className={item.author === username && "text-sky-500"}>
-              <p className="m-2">
+              <p className="m-4">
                 {item.author} : <strong>{item.message}</strong> ({item.time})
               </p>
             </div>
@@ -69,7 +71,7 @@ export default function Chat({ socket, username, room, setOpenRoom }) {
         <div ref={messageEndRef} />
       </div>
 
-      <form onSubmit={sendMessage} className="flex flex-col w-96	">
+      <form onSubmit={sendMessage} className="flex flex-col md:w-96">
         <input
           className="border-2 my-4 p-2"
           type="text"
