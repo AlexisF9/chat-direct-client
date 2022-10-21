@@ -1,7 +1,8 @@
 # Project
 
 - https://chat-direct-client.vercel.app/ (front)
-- Back sur Heroku
+- Back sur Heroku (socket)
+- Pas de BDD (messages non enregistés)
 
 # Start project
 
